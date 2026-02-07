@@ -1,11 +1,14 @@
 import mongoose from "mongoose";
-
 export const connectDB = async (req, res) => {
     //mongo server url
-    const url = "mongodb+srv://Bojo:<xXpQ1jl91bQlNRUH>@aution.xxfqjv0.mongodb.net/?appName=aution";
+    const MONGODB_URI = process.env.MONGO_URI;
+    try {
+        await mongoose.connect(MONGODB_URI);
+        console.log(`MongoDB Connection successful to ${connection.host}`);
+    } catch (error) {
+        console.log(`MongoDB Connection failed ${error.message}`);
+        process.exit(1);
+    }
 
-    const {connection} = await mongoose.connect(url);
 
-    console.log(`MongoDB Connection successful to ${connection.host}`);
-
-}
+};

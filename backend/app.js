@@ -4,6 +4,9 @@ import bodyParser from "body-parser";
 import { connectDB } from "./DB/Database.js";
 import transactionRoutes from "./Routers/Transactions.js";
 import userRoutes from "./Routers/userRouter.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 //app is express server
 const app = express();
