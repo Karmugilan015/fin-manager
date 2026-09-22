@@ -21,8 +21,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // ✅ Routes
-app.use("/api/v1", transactionRoutes);
-app.use("/api/auth", userRoutes);
+app.use("/", transactionRoutes);
+app.use("/", userRoutes);
 
 app.get("/", (req, res) => {
   res.send("FinManager Server is working");
