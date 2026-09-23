@@ -48,7 +48,7 @@ const Login = () => {
 
     setLoading(true);
 
-    const { data } = await axios.post(loginAPI, {
+    const { data } = await axios.post("https://fin-manager-dkwr.onrender.com/register", {
       email,
       password,
     });
@@ -56,10 +56,10 @@ const Login = () => {
     if (data.success === true) {
       localStorage.setItem("user", JSON.stringify(data.user));
       navigate("/");
-      toast.success(data.message, toastOptions);
+      toast.success("user created", toastOptions);
       setLoading(false);
     } else {
-      toast.error(data.message, toastOptions);
+      toast.error("can't create user", toastOptions);
       setLoading(false);
     }
   };
@@ -186,9 +186,6 @@ const Login = () => {
                 }}
                 className="mt-4"
               >
-                <Link to="/forgotPassword" className="text-white lnk">
-                  Forgot Password?
-                </Link>
 
                 <Button
                   type="submit"
