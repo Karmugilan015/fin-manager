@@ -60,24 +60,22 @@ const Register = () => {
 
       setLoading(false);
      
-      const {data} = await axios.post(registerAPI, {
-        name,
-        email,
-        password
-      });
+      const { data } = await axios.post("https://fin-manager-dkwr.onrender.com/register", {
+      name,
+      email,
+      password,
+    });
 
-      if(data.success === true){
-        delete data.user.password;
-        localStorage.setItem("user", JSON.stringify(data.user));
-        toast.success(data.message, toastOptions);
-        setLoading(true);
-        navigate("/");
-      }
-      else{
-        toast.error(data.message, toastOptions);
-        setLoading(false);
-      }
-    };
+    if (data.success === true) {
+      localStorage.setItem("user", JSON.stringify(data.user));
+      navigate("/");
+      toast.success("user created", toastOptions);
+      setLoading(false);
+    } else {
+      toast.error("can't create user", toastOptions);
+      setLoading(false);
+    }
+  };
 
   return (
     <>
