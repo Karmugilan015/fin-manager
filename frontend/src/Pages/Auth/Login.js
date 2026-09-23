@@ -56,10 +56,10 @@ const Login = () => {
     if (data.success === true) {
       localStorage.setItem("user", JSON.stringify(data.user));
       navigate("/");
-      toast.success("user created", toastOptions);
+      toast.success("Succesfully logged in", toastOptions);
       setLoading(false);
     } else {
-      toast.error("can't create user", toastOptions);
+      toast.error("try again", toastOptions);
       setLoading(false);
     }
   };
